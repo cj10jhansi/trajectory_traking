@@ -1,0 +1,46 @@
+\hypertarget{classPathSmoother}{}\doxysection{Path\+Smoother Class Reference}
+\label{classPathSmoother}\index{PathSmoother@{PathSmoother}}
+
+
+Implements path smoothing using cubic splines. Input\+: discrete waypoints, Output\+: smooth path.  
+
+
+
+
+{\ttfamily \#include $<$path\+\_\+smoother.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ \mbox{\hyperlink{classPathSmoother_a0f9e88a048268665d6b7b81e0e78e4f2}{smooth}} (const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&waypoints)
+\begin{DoxyCompactList}\small\item\em Smooth the raw path using cubic interpolation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements path smoothing using cubic splines. Input\+: discrete waypoints, Output\+: smooth path. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPathSmoother_a0f9e88a048268665d6b7b81e0e78e4f2}\label{classPathSmoother_a0f9e88a048268665d6b7b81e0e78e4f2}} 
+\index{PathSmoother@{PathSmoother}!smooth@{smooth}}
+\index{smooth@{smooth}!PathSmoother@{PathSmoother}}
+\doxysubsubsection{\texorpdfstring{smooth()}{smooth()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ Path\+Smoother\+::smooth (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::pair$<$ double, double $>$$>$ \&}]{waypoints }\end{DoxyParamCaption})}
+
+
+
+Smooth the raw path using cubic interpolation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoints} & Input raw waypoints (x, y) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Smoothed path 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/trajectory\+\_\+tracking/\mbox{\hyperlink{path__smoother_8hpp}{path\+\_\+smoother.\+hpp}}\item 
+include/trajectory\+\_\+tracking/\mbox{\hyperlink{path__smoother_8cpp}{path\+\_\+smoother.\+cpp}}\end{DoxyCompactItemize}
