@@ -15,17 +15,27 @@ Tested using **TurtleBot3** in **ROS 2 Humble**.
 
 ## 🧠 System Overview
 
-```mermaid
-graph TD
-    A[/goal_pose (PoseStamped)] --> B[PathPlannerNode]
-    subgraph PathPlannerNode
-        B1[/odom (Odometry)]
-    end
-    B --> C[Smoothed Waypoints (Pose2D list)]
-    C --> D[PurePursuitController]
-    D1[/odom (Odometry)] --> D
-    D --> E[/cmd_vel (Twist)]
-    E --> F[TurtleBot3 Robot]
+[ /goal_pose (geometry_msgs::PoseStamped) ]
+                                      │
+                                      ▼
+                          ┌────────────────────────┐
+                          │     PathPlannerNode     │
+                          │  (Sub: /goal_pose, /odom)│
+                          │  (Pub: waypoints topic) │
+                          └────────────┬────────────┘
+                                       │
+                          Smoothed waypoints (std::vector<Pose2D>)
+                                       ▼
+                          ┌────────────────────────┐
+                          │ PurePursuitController   │
+                          │ (Sub: /odom + waypoints)│
+                          │ (Pub: /cmd_vel)         │
+                          └────────────┬────────────┘
+                                       │
+                                   [ /cmd_vel ]
+                                       │
+                                       ▼
+                              [ TurtleBot3 Robot ]
 
 ## 🚀 How to Build & Run
 
