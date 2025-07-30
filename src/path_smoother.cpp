@@ -55,7 +55,7 @@ vector<pair<double, double>> PathSmoother::smooth(const vector<pair<double, doub
 
     // Sample the spline at a fixed resolution
     vector<pair<double, double>> result;
-    int resolution = 200;
+    int resolution = 100;
     for (int i = 0; i < resolution; ++i) {
         double ti = (static_cast<double>(i) / (resolution - 1)) * (n - 1);
         Eigen::Vector2d point = spline(ti);
