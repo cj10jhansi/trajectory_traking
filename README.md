@@ -39,9 +39,8 @@ Tested using **TurtleBot3** in **ROS 2 Humble**.
 
 
 ## 🚀 How to Build & Run
-
-bash
-cd ~/ros2_ws
-colcon build --packages-select trajectory_tracking
-source install/setup.bash
-ros2 launch trajectory_tracking system.launch.py
+        bash
+        cd ~/ros2_ws
+        colcon build --packages-select trajectory_tracking
+        source install/setup.bash
+        ros2 launch trajectory_tracking system.launch.py
