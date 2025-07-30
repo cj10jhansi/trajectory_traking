@@ -18,15 +18,25 @@ colcon build --packages-select trajectory_tracking
 source install/setup.bash
 ros2 launch trajectory_tracking system.launch.py
 
-## System Design
-
-### Modules:
-- PathSmoother: Cubic Spline
-- TrajectoryGenerator: Time stamp & velocity profile
-- Controller: Pure Pursuit based on lookahead
-
-### ROS 2 Nodes & Flow:
-
-        [Waypoints] ---> [Smoother] ---> [Trajectory] ---> [Controller] ---> [cmd_vel]
-
-Each node uses ROS 2 pub/sub and parameters.
+## 🚀 system Design
+                    [ /goal_pose (geometry_msgs::PoseStamped) ]
+                                      │
+                                      ▼
+                          ┌────────────────────────┐
+                          │     PathPlannerNode     │
+                          │  (Sub: /goal_pose, /odom)│
+                          │  (Pub: waypoints topic) │
+                          └────────────┬────────────┘
+                                       │
+                          Smoothed waypoints (std::vector<Pose2D>)
+                                       ▼
+                          ┌────────────────────────┐
+                          │ PurePursuitController   │
+                          │ (Sub: /odom + waypoints)│
+                          │ (Pub: /cmd_vel)         │
+                          └────────────┬────────────┘
+                                       │
+                                   [ /cmd_vel ]
+                                       │
+                                       ▼
+                              [ TurtleBot3 Robot ]
