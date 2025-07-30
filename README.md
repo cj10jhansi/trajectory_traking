@@ -15,7 +15,7 @@ Tested using **TurtleBot3** in **ROS 2 Humble**.
 
 ## 🧠 System Overview
 
-[ /goal_pose (geometry_msgs::PoseStamped) ]
+                    [ /goal_pose (geometry_msgs::PoseStamped) ]
                                       │
                                       ▼
                           ┌────────────────────────┐
@@ -36,6 +36,7 @@ Tested using **TurtleBot3** in **ROS 2 Humble**.
                                        │
                                        ▼
                               [ TurtleBot3 Robot ]
+
 
 ## 🚀 How to Build & Run
 
