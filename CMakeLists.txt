@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.8)
 project(trajectory_tracking)
 
-# Enable C++14 or later
+# Set C++ standard
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find dependencies
 find_package(ament_cmake REQUIRED)
@@ -13,11 +14,14 @@ find_package(std_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
+# find_package(OpenCV REQUIRED)
+# find_package(yaml-cpp REQUIRED)
 
 # Include headers
 include_directories(
   include
-  /usr/include/eigen3
+  ${EIGEN3_INCLUDE_DIR}
+  # ${OpenCV_INCLUDE_DIRS}
 )
 
 # Add executable
@@ -37,22 +41,24 @@ ament_target_dependencies(trajectory_tracking_node
   tf2_geometry_msgs
 )
 
-# Link Eigen explicitly if needed
+# Link non-ROS libraries
 target_link_libraries(trajectory_tracking_node
   Eigen3::Eigen
+  # yaml-cpp
+  # ${OpenCV_LIBS}
 )
 
-# Install binary
+# Install the binary
 install(TARGETS trajectory_tracking_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
-# Install headers
+# Install header files
 install(DIRECTORY include/
   DESTINATION include/
 )
 
-# Install launch files if available
+# Install launch files
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}/
 )
